@@ -5,7 +5,27 @@ def help():
 def loadcuda():
     import platform
     print("해당 함수는 현재 지원하지 않습니다. 업데이트를 기다려주세요!")
-    
+
+def editpreset(preset_name:str):
+    pass
+
+# def web_edit_preset():
+    # from fastapi import FastAPI
+    # from fastapi.responses import StreamingResponse
+    # from fastapi import Request
+    # from fastapi.responses import HTMLResponse
+    # from fastapi.templating import Jinja2Templates
+    # from fastapi.staticfiles import StaticFiles
+    # import pymysql
+    # from pydantic import BaseModel
+    # templates = Jinja2Templates(directory="templates")
+    # app = FastAPI(docs_url="/documentation", redoc_url=None)
+    # @app.get("/")
+    # async def home(request: Request):
+    #     return templates.TemplateResponse("index.html",{"request":request})
+    # print("webui를 실행했습니다.")
+    # 현재 지원하지 않는 기능입니다. / edit preset을 당분간 이용해주세요!
+
 def mkpreset(preset_name:str):
     import os 
     import sqlite3

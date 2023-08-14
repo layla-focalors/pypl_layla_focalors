@@ -8,6 +8,6 @@ url='https://github.com/layla-focalors',
 license='MIT', 
 py_modules=['cyclegan'],
 python_requires='>=3',
-install_requires=['numpy', 'pandas', 'scipy', 'scikit-learn', 'pymysql', 'cryptography'], 
+install_requires=['numpy', 'pandas', 'scipy', 'scikit-learn', 'pymysql', 'cryptography','selenium','uvicorn[standard]'], 
 packages=['layla_focalors'] 
 )
