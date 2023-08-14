@@ -212,7 +212,7 @@ def loadmodel_cycle_test(preset, inputpath, outputpath, epoch):
     d_x_optimizer = optim.Adam(D_X.parameters(), lr, [beta1, beta2])
     d_y_optimizer = optim.Adam(D_Y.parameters(), lr, [beta1, beta2])
     
-    from helpers2 import save_samples, checkpoint
+    # from helpers2 import save_samples, checkpoint
     def training_loop(dataloader_X, dataloader_Y, test_dataloader_X, test_dataloader_Y, n_epochs=1000):
         point_every = 100
         # keep track of losses over time
@@ -292,7 +292,7 @@ def loadmodel_cycle_test(preset, inputpath, outputpath, epoch):
         if epoch % sample_every == 0:
             G_YtoX.eval()
             G_XtoY.eval()
-            save_samples(epoch, fixed_Y, fixed_X, G_YtoX, G_XtoY, batch_size=16)
+            # save_samples(epoch, fixed_Y, fixed_X, G_YtoX, G_XtoY, batch_size=16)
             G_YtoX.train()
             G_XtoY.train()
             
