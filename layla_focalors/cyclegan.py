@@ -7,7 +7,43 @@ def loadcuda():
     print("해당 함수는 현재 지원하지 않습니다. 업데이트를 기다려주세요!")
 
 def editpreset(preset_name:str):
-    pass
+    import os
+    import sqlite3
+    os.chdir("preset")
+    conn = sqlite3.connect("preset.db")
+    cur = conn.cursor()
+    settings = ["model_path", "webui"]
+    for i in range(len(settings)):
+        if i == 0:
+            print("모델의 경로를 지정하시겠습니까?")
+            print("이미 존재하는 모델을 사용하는 경우 설정해주세요! ( 기본값 : Notdefined )")
+            ses = input("모델의 경로를 지정할까요? (Y/N) : ")
+            if ses == "Y" or ses == "y":
+                model_path = input("모델의 경로를 입력해주세요\n")
+                print("모델의 경로가 지정되었습니다. 수정하시려면 edit model을 사용해주세요!")
+            elif ses == "N" or ses == "n":
+                print("모델의 경로를 지정하지 않습니다.")
+                model_path = "Undefined"
+            else:
+                print("잘못된 입력입니다. 모델의 경로를 지정하지 않습니다.!")
+                model_path = "Undefined"
+        elif i == 1:
+            webui = input("웹UI를 사용하시겠습니까? ( 기본값 : Y ) : ")
+            if webui == "Y" or webui == "y":
+                webui_value = 1
+            elif webui == "N" or webui == "n":
+                webui_value = 0
+            else:
+                print("잘못된 입력입니다. 기본값이 적용됩니다.")
+    print("-------------------------------------------------")
+    print("설정을 완료했습니다. 다음과 같은 설정이 적용됩니다.")
+    setting_dat = [model_path, webui_value]
+    for i in range(len(settings)):
+        print(f"Option {settings[i]} : {setting_dat[i]}")
+    print("-------------------------------------------------")
+    cur.execute(f"INSERT INTO preset(preset, model_path, webui) VALUES (?,?,?)",(preset_name, model_path, webui_value))
+    conn.close()
+    return None
 
 # def web_edit_preset():
     # from fastapi import FastAPI
@@ -72,6 +108,7 @@ def mkpreset(preset_name:str):
         print(f"Option {settings[i]} : {setting_dat[i]}")
     print("-------------------------------------------------")
     cur.execute(f"INSERT INTO preset(preset, model_path, webui) VALUES (?,?,?)",(preset_name, model_path, webui_value))
+    conn.close()
     # TestCode Init
     print(f"프리셋 {preset_name}가 생성되었습니다!")
     return None
