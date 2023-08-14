@@ -9,16 +9,21 @@ def loadcuda():
 def mkpreset(preset_name:str):
     import os 
     import sqlite3
+    # package load
     if os.path.exists("preset"):
         os.chdir("preset")
         conn = sqlite3.connect("preset.db")
+        cur = conn.cursor()
     else:
         os.system("mkdir preset")
         os.chdir("preset")
         conn = sqlite3.connect("preset.db")
-        conn.execute("CREATE TABLE preset (preset text, model_path text, webui text)")
-    cur = conn.cursor()
-    cur.execute(f"INSERT INTO preset preset VALUES {preset_name}, not_defined")
+        cur = conn.cursor()
+        cur.execute("CREATE TABLE IF NOT EXISTS preset (preset TEXT, model_path TEXT, webui INTEGER)")
+    # if database == True, Bypass command, else, make database
+    cur.execute(f"INSERT INTO preset(preset, model_path, webui) VALUES (?,?,?)",(preset_name, 'Notdefined', 1))
+    # TestCode Init
+    # print(cur.execute("SELECT * FROM preset").fetchall())
     
     
     
