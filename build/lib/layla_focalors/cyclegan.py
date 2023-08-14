@@ -7,18 +7,13 @@ def loadcuda():
     print("해당 함수는 현재 지원하지 않습니다. 업데이트를 기다려주세요!")
     
 def mkpreset(preset_name:str):
-    import os 
     import sqlite3
-    if os.path.exists("preset"):
-        os.chdir("preset")
-        conn = sqlite3.connect("preset.db")
-    else:
-        os.system("mkdir preset")
-        os.chdir("preset")
-        conn = sqlite3.connect("preset.db")
-        conn.execute("CREATE TABLE preset (preset text, model_path text, webui text)")
+    conn = sqlite3.connect("preset.db")
     cur = conn.cursor()
-    cur.execute(f"INSERT INTO preset preset VALUES {preset_name}, not_defined")
-    
+    try:
+        conn.execute("CREATE TABLE preset (preset_name text, model_path text, webui text)")
+    except:
+        # 오류가 나면 패키지가 있다고 간주
+        pass
     
     

@@ -1,0 +1,9 @@
+Metadata-Version: 2.1
+Name: layla-focalors
+Version: 1.0.0
+Summary: layla-focalors, AI Preset python
+Home-page: https://github.com/layla-focalors
+Author: layla-focalors
+Author-email: layla-focalors@arisia.space
+License: MIT
+Requires-Python: >=3

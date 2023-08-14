@@ -9,5 +9,5 @@ license='MIT',
 py_modules=['cyclegan'],
 python_requires='>=3',
 install_requires=['numpy', 'pandas', 'scipy', 'scikit-learn', 'pymysql', 'cryptography'], 
-packages=['arisia'] 
+packages=['layla_focalors'] 
 )

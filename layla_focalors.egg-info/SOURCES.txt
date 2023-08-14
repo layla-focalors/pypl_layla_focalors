@@ -1,0 +1,8 @@
+setup.py
+layla_focalors/__init__.py
+layla_focalors/cyclegan.py
+layla_focalors.egg-info/PKG-INFO
+layla_focalors.egg-info/SOURCES.txt
+layla_focalors.egg-info/dependency_links.txt
+layla_focalors.egg-info/requires.txt
+layla_focalors.egg-info/top_level.txt
